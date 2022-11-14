@@ -23,3 +23,4 @@ Route::get('/', function () {
 
 
 Route::get('/movies/{id}', [MovieController::class, 'show'])->name('show.movie');
+Route::get('/movies', [MovieController::class, 'list'])->name('list.movies');

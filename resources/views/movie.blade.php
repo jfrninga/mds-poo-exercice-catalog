@@ -22,7 +22,7 @@
         <div>
             <img src="{{$movie->poster}}" alt="{{$movie->primaryTitle}}">
         </div>
-        
+
         <a href="http://www.imdb.com/title/{{$movie->tconst}}">View on IMDB</a>
 
         <h2>{{$movie->originalTitle}}</h2>
@@ -33,9 +33,11 @@
 
         <p><strong>Résumé : </strong>{{$movie->plot}}</p>
 
-        <p><strong>Note sur 10 : </strong>{{$movie->averageRating}}</p>
+        <p><strong>Note : </strong>{{$movie->averageRating}} / 10</p>
 
         <p><strong>Nombres de votes : </strong>{{$movie->numVotes}} votes</p>
+
+        <a href="http://127.0.0.1:8000/">Retour sur la liste de films</a>
 
     </div>
 </body>
