@@ -16,6 +16,7 @@
 </head>
 
 <body>
+    <a href="http://127.0.0.1:8000/">Retour sur la liste de films</a>
     <div class="container">
         
         <h1>{{$movie->primaryTitle}}</h1>
@@ -36,8 +37,6 @@
         <p><strong>Note : </strong>{{$movie->averageRating}} / 10</p>
 
         <p><strong>Nombres de votes : </strong>{{$movie->numVotes}} votes</p>
-
-        <a href="http://127.0.0.1:8000/">Retour sur la liste de films</a>
 
     </div>
 </body>
