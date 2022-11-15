@@ -17,7 +17,7 @@
 
 <body>
 
-    <a href="http://127.0.0.1:8000/">Retour sur la liste des films</a>
+    <a href="http://127.0.0.1:8000/">Retour sur la liste des films</a><br>
 
     <h2 style="text-align: center;">Tous les genres</h2>
 

@@ -22,4 +22,13 @@ class Movie extends Model
      * @var bool
      */
     public $timestamps = false;
+
+    /**
+     * The roles that belong to the user.
+     */
+
+    public function genres()
+    {
+        return $this->belongsToMany(Genre::class, 'movies_genres');
+    }
 }
