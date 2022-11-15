@@ -24,6 +24,8 @@
     </style>
 </head>
 <body>
+    <!-- display the random page on the front page -->
+    <!-- <iframe src="/movie/random"></iframe> -->
     <div class="container">
         <h1>{{ config('app.name') }}</h1>
         <h3><a href="{{route('list.movies')}}">Top 20 films</a></h3>
@@ -33,6 +35,7 @@
         <div class="wrapper">
             @foreach ($movies as $movie)
             <div>
+
                 <a href="/movies/{{ $movie->id }}" style="margin: 5px;">
                     <img src="{{ $movie->poster }}" alt="{{ $movie->primaryTitle }}">
                 </a>
