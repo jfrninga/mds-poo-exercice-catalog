@@ -19,7 +19,13 @@
 
     <a href="http://127.0.0.1:8000/">Retour sur la liste des films</a>
 
-    <h2>Top 20 films</h2>
+    <h2 style="text-align: center;">Top 20 films</h2>
+
+    <div class="filter">
+        <a href="/movies?order_by=startYear&order=asc"><button>Newest</button></a>
+        <a href="/movies?order_by=averageRating&order=desc"><button>Top rated</button></a>
+    </div>
+
     <div class="container">
         <!-- affichage de 20 films -->
         @foreach ($movies as $movie)
@@ -27,10 +33,17 @@
             <a href="/movies/{{ $movie->id }}" class="img-card">
                 <img src="{{ $movie->poster }}" alt="{{ $movie->primaryTitle }}">
             </a>
+            <h2>{{$movie->originalTitle}}</h2>
+            <p><strong>Date de sortie : </strong>{{$movie->startYear}}</p>
+            <p><strong>Note : </strong>{{$movie->averageRating}} / 10</p>
         </div>
         @endforeach
     </div>
-    {{$movies->links()}}
+
+    <div class="pagination">
+        {{ $movies->appends(request()->query())->links() }}
+    </div>
+
 </body>
 
 <!-- Styles -->
@@ -43,17 +56,27 @@
         max-width: 1300px;
         flex-wrap: wrap;
     }
-    a.img-card{
+
+    a.img-card {
         margin: 7px;
     }
+
     .pagination {
         display: flex;
         list-style: none;
         justify-content: center;
         font-size: 20px;
+        text-align: center;
     }
+
     .pagination li {
         margin: 5px;
+    }
+    .filter {
+        text-align: center;
+    }
+    button{
+        margin-bottom: 15px;
     }
 </style>
 
