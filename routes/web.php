@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $movies = Movie::inRandomOrder()->whereNotNull('poster')->limit(12)->get();
-
+    
     return view('home', ['movies' => $movies]);
 });
 

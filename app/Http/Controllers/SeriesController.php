@@ -16,7 +16,6 @@ class SeriesController extends Controller
         return view('serie', ['serie' => $serie]);
     }
 
-
     public function list(Request $request)
     {
         $order_by = $request->query('order_by');
