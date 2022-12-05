@@ -31,6 +31,8 @@
         <h3><a href="{{route('list.movies')}}">Top 20 films</a></h3>
         <h3><a href="{{route('random.movie')}}">Random Film</a></h3>
         <h3><a href="{{route('list.genres')}}">Genre des Films</a></h3>
+        <h3><a href="{{route('list.series')}}">Series</a></h3>
+        <h3><a href="{{route('random.serie')}}">Random Serie</a></h3>
 
         <div class="wrapper">
             @foreach ($movies as $movie)
