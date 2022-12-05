@@ -23,13 +23,13 @@
 
     <h1>{{ config('app.name') }}</h1>
     <button>
-        <a href="/series?order_by=startYear&order=desc">Série récentes</a>
+        <a href="/series?order_by=startYear&order=desc">Latest Serie</a>
     </button>
     <button>
-        <a href="/series?order_by=startYear&order=asc">Série anciennes</a>
+        <a href="/series?order_by=startYear&order=asc">Older series</a>
     </button>
     <button>
-        <a href="/series?order_by=averageRating&order=desc">Meilleures Séries</a>
+        <a href="/series?order_by=averageRating&order=desc">Best Series</a>
     </button>
     <button>
         <a href="{{route('random.serie')}}">Random Serie</a>

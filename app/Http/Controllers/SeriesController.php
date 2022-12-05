@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Episode;
 use App\Models\Series;
 use Illuminate\Http\Request;
 
@@ -10,10 +11,32 @@ class SeriesController extends Controller
 
     public function show(Series $serie, $id)
     {
-        $serie = Series::find($id);
+        // $serie = Series::find($id);
 
-        // dd($movie);
-        return view('serie', ['serie' => $serie]);
+        // return view('serie', ['serie' => $serie]);
+
+        $serie = Series::where('id', $id)->first();
+
+        $episodes = Series::find($serie->id)->episodes()->orderBy('episodeNumber', 'ASC')->get();
+        $seasonNumber = Series::find($serie->id)->episodes()->max('seasonNumber');
+
+        return view('serie', ['serie' => $serie, 'episodes' => $episodes, 'seasonNumber' => $seasonNumber]);
+    }
+
+
+    public function season($id, $seasonNumber)
+    {
+        $episodes = Episode::where('series_id', $id)->where('seasonNumber', $seasonNumber)->simplePaginate(20);
+        return view('episodes', ['episodes' => $episodes]);
+    }
+
+    public function episode($id, $seasonNumber, $episodeNumber)
+    {
+        $serie = Series::where('id', $id)->first();
+        $serieId = $serie->id;
+        $episode = Episode::where('series_id', $serieId)->where('seasonNumber', $seasonNumber)->where('episodeNumber', $episodeNumber)->first();
+
+        return view('episode', ['episode' => $episode]);
     }
 
     public function list(Request $request)
@@ -34,11 +57,11 @@ class SeriesController extends Controller
         return view('series', ['series' => $series]);
     }
 
-    
+
     public function random()
     {
-        $serie = Series::inRandomOrder()->first();
+        $series = Series::inRandomOrder()->first();
 
-        return view('serie', ['serie' => $serie]);
+        return view('series', ['series' => $series]);
     }
 }

@@ -18,7 +18,7 @@
 <body>
     <a href="http://127.0.0.1:8000/">Retour sur la liste des films</a>
     <div class="container">
-        
+
         <h1>{{$serie->primaryTitle}}</h1>
         <div>
             <img src="{{$serie->poster}}" alt="{{$serie->primaryTitle}}">
@@ -38,6 +38,21 @@
 
         <p><strong>Nombres de votes : </strong>{{$serie->numVotes}} votes</p>
 
+    </div>
+    <div class="series">
+        @for ($i = 1; $i <= $seasonNumber; $i++) <a href="/series/{{ $serie->id }}/season/{{ $i }}">Saison {{ $i }}</a><br><br>
+
+            @foreach($episodes as $episode)
+
+            @if($episode->seasonNumber === $i)
+
+            <a href="/series/{{ $serie->id }}/season/{{ $i }}/episode/{{ $episode->episodeNumber }}">Episode {{ $episode->episodeNumber }}</a><br>
+
+            @endif
+
+            @endforeach
+
+         @endfor
     </div>
 </body>
 
